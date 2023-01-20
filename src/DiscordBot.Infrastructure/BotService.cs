@@ -50,10 +50,4 @@ public class BotService : BackgroundServiceWithLogging
         await discordClient.SetGameAsync($"v{versionProvider.BotVersion}");
         await Task.Delay(Timeout.Infinite, stoppingToken);
     }
-
-    public override void Dispose()
-    {
-        discordClient.Dispose();
-        base.Dispose();
-    }
 }
