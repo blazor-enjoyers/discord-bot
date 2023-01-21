@@ -84,4 +84,4 @@ jobs:
           port: ${{ secrets.MIKRUS_PORT }}
           script: |
             docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
-            docker stop ${{ env.DOCKER_CONTAINER_NAME }} || true && docker rm ${{ env.DOCKER_CONTAINER_NAME }} || true
+            docker stop ${{ vars.DOCKER_CONTAINER_NAME }} || true && docker rm ${{ vars.DOCKER_CONTAINER_NAME }} || true
