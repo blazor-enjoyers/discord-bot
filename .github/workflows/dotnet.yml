@@ -70,3 +70,6 @@ jobs:
         
       - name: Push image
         run: docker push wiknap/discord-bot
+        
+      - name: Get sshpass
+        run: apt-get install sshpass
