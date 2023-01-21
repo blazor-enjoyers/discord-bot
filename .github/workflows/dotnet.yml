@@ -75,7 +75,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build-and-push-docker-image
     steps:
-      - name: Remove old container
+      - name: Update container
         uses: appleboy/ssh-action@v0.1.7
         with:
           host: ${{ secrets.MIKRUS_HOST }}
@@ -85,4 +85,5 @@ jobs:
           script: |
             docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
             docker stop ${{ vars.DOCKER_CONTAINER_NAME }} || true && docker rm ${{ vars.DOCKER_CONTAINER_NAME }} || true
+            docker pull wiknap/discord-bot
             docker run --env DOTNET_ENVIRONMENT=Production --env Bot__Token=${{ secrets.DISCORD_BOT_TOKEN }} --name ${{ vars.DOCKER_CONTAINER_NAME }} -d wiknap/discord-bot
