@@ -82,4 +82,5 @@ jobs:
           username: ${{ secrets.MIKRUS_LOGIN }}
           password: ${{ secrets.MIKRUS_PASSWORD }}
           port: ${{ secrets.MIKRUS_PORT }}
-          script: whoami
+          script: |
+            docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
