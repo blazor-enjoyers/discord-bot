@@ -6,6 +6,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <ContainerImageName>discord-bot</ContainerImageName>
+        <ContainerImageTag>latest</ContainerImageTag>
     </PropertyGroup>
 
     <ItemGroup>
