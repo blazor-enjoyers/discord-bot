@@ -62,5 +62,8 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
         
+      - name: Tag image
+        run: docker tag discord-bot wiknap/discord-bot
+        
       - name: Build image
-        run: docker push wiknap/discord-bot:latest
+        run: docker push wiknap/discord-bot
