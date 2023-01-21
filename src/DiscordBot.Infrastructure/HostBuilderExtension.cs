@@ -1,5 +1,7 @@
 ﻿using System.Reflection;
+using Discord.Interactions;
 using Discord.WebSocket;
+using DiscordBot.Infrastructure.Commands;
 using DiscordBot.Infrastructure.Configuration;
 using DiscordBot.Infrastructure.Logging;
 using Microsoft.Extensions.Configuration;
@@ -59,11 +61,14 @@ public static class HostBuilderExtension
     private static IServiceCollection AddBotServices(this IServiceCollection collection, HostBuilderContext context)
     {
         collection.Configure<BotOptions>(context.Configuration.GetSection(BotOptions.SectionName));
-        collection.AddSingleton<DiscordSocketConfig, BotDiscordSocketConfig>();
         collection.AddSingleton<IBotOptions, BotOptionsProvider>();
+        collection.AddSingleton<DiscordSocketConfig, BotDiscordSocketConfig>();
+        collection.AddSingleton<InteractionServiceConfig, BotInteractionServiceConfig>();
+        collection.AddSingleton<InteractionService>();
         collection.AddSingleton<DiscordSocketClient>();
         collection.AddSingleton<IBotVersionProvider, BotVersionProvider>();
         collection.AddSingleton<LoggingHandler>();
+        collection.AddSingleton<CommandHandler>();
         collection.AddHostedService<BotService>();
 
         return collection;

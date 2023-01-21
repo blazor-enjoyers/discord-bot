@@ -1,4 +1,5 @@
 using Discord;
+using Discord.Interactions;
 using Discord.WebSocket;
 using Microsoft.Extensions.Logging;
 
@@ -7,17 +8,21 @@ namespace DiscordBot.Infrastructure.Logging;
 public class LoggingHandler
 {
     private readonly DiscordSocketClient discordClient;
+    private readonly InteractionService interactionService;
     private readonly ILogger<LoggingHandler> logger;
 
-    public LoggingHandler(DiscordSocketClient discordClient, ILogger<LoggingHandler> logger)
+    public LoggingHandler(DiscordSocketClient discordClient,
+        ILogger<LoggingHandler> logger, InteractionService interactionService)
     {
         this.discordClient = discordClient;
         this.logger = logger;
+        this.interactionService = interactionService;
     }
 
     public void Initialize()
     {
         discordClient.Log += LogAsync;
+        interactionService.Log += LogAsync;
     }
 
     private Task LogAsync(LogMessage message)
