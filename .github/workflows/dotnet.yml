@@ -61,9 +61,12 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+          
+      - name: Build image
+        run: dotnet publish src\DiscordBot\DiscordBot.csproj --os linux --arch x64 /t:PublishContainer -c Release
         
       - name: Tag image
         run: docker tag discord-bot wiknap/discord-bot
         
-      - name: Build image
+      - name: Push image
         run: docker push wiknap/discord-bot
