@@ -78,8 +78,8 @@ jobs:
       - name: Remove old container
         uses: appleboy/ssh-action@v0.1.7
         with:
-          host: ${{ secrets.MIKRUS_HOST }}
+          host: ${{ variables.MIKRUS_HOST }}
           username: ${{ secrets.MIKRUS_LOGIN }}
           password: ${{ secrets.MIKRUS_PASSWORD }}
-          port: ${{ secrets.MIKRUS_PORT }}
+          port: ${{ variables.MIKRUS_PORT }}
           script: whoami
