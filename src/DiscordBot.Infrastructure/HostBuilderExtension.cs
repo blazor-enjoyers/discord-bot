@@ -61,6 +61,8 @@ public static class HostBuilderExtension
     private static IServiceCollection AddBotServices(this IServiceCollection collection, HostBuilderContext context)
     {
         collection.Configure<BotOptions>(context.Configuration.GetSection(BotOptions.SectionName));
+        collection.Configure<ChatGptOptions>(context.Configuration.GetSection(ChatGptOptions.SectionName));
+        collection.AddSingleton<IChatGptOptions, ChatGptOptionsProvider>();
         collection.AddSingleton<IBotOptions, BotOptionsProvider>();
         collection.AddSingleton<DiscordSocketConfig, BotDiscordSocketConfig>();
         collection.AddSingleton<InteractionServiceConfig, BotInteractionServiceConfig>();
