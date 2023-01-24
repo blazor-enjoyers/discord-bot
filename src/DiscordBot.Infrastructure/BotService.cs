@@ -1,8 +1,8 @@
 using Discord;
 using Discord.WebSocket;
+using DiscordBot.Hosting;
 using DiscordBot.Infrastructure.Commands;
 using DiscordBot.Infrastructure.Configuration;
-using DiscordBot.Infrastructure.Hosting;
 using DiscordBot.Infrastructure.Logging;
 using Microsoft.Extensions.Logging;
 

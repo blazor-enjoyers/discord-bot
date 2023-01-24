@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot", "src\DiscordBo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordBot.Infrastructure", "src\DiscordBot.Infrastructure\DiscordBot.Infrastructure.csproj", "{2F5D2DD0-6E2E-499E-A409-657B423DAC9D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordBot.Rss", "src\DiscordBot.Rss\DiscordBot.Rss.csproj", "{80D61447-EF3E-4162-8179-8C7203986DBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordBot.Hosting", "src\DiscordBot.Hosting\DiscordBot.Hosting.csproj", "{B202222A-0DA1-4696-96FD-6616799031C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +27,14 @@ Global
 		{2F5D2DD0-6E2E-499E-A409-657B423DAC9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F5D2DD0-6E2E-499E-A409-657B423DAC9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F5D2DD0-6E2E-499E-A409-657B423DAC9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80D61447-EF3E-4162-8179-8C7203986DBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80D61447-EF3E-4162-8179-8C7203986DBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80D61447-EF3E-4162-8179-8C7203986DBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80D61447-EF3E-4162-8179-8C7203986DBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B202222A-0DA1-4696-96FD-6616799031C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B202222A-0DA1-4696-96FD-6616799031C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B202222A-0DA1-4696-96FD-6616799031C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B202222A-0DA1-4696-96FD-6616799031C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,5 +42,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{BC486B84-8707-4890-BDC1-FE3A58DA7856} = {A150649D-3FC8-4C38-838D-7660D0166B81}
 		{2F5D2DD0-6E2E-499E-A409-657B423DAC9D} = {A150649D-3FC8-4C38-838D-7660D0166B81}
+		{80D61447-EF3E-4162-8179-8C7203986DBF} = {A150649D-3FC8-4C38-838D-7660D0166B81}
+		{B202222A-0DA1-4696-96FD-6616799031C1} = {A150649D-3FC8-4C38-838D-7660D0166B81}
 	EndGlobalSection
 EndGlobal

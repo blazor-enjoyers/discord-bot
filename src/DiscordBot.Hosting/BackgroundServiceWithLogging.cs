@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace DiscordBot.Infrastructure.Hosting;
+namespace DiscordBot.Hosting;
 
 public abstract class BackgroundServiceWithLogging : BackgroundService
 {

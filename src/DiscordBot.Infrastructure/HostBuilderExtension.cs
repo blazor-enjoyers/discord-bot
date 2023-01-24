@@ -4,6 +4,8 @@ using Discord.WebSocket;
 using DiscordBot.Infrastructure.Commands;
 using DiscordBot.Infrastructure.Configuration;
 using DiscordBot.Infrastructure.Logging;
+using DiscordBot.Infrastructure.Rss;
+using DiscordBot.Rss;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -28,8 +30,9 @@ public static class HostBuilderExtension
     {
         return hostBuilder.ConfigureHostConfiguration(config =>
         {
-            config.AddEnvironmentVariables();
-            config.AddCommandLine(args);
+            config
+                .AddEnvironmentVariables()
+                .AddCommandLine(args);
         });
     }
 
@@ -53,24 +56,27 @@ public static class HostBuilderExtension
     {
         return hostBuilder.ConfigureServices((context, collection) =>
         {
-            collection.AddLogging();
-            collection.AddBotServices(context);
+            collection
+                .AddLogging()
+                .AddSingleton<IClock, Clock>()
+                .AddRssWatcher()
+                .AddBotServices(context);
         });
     }
 
     private static IServiceCollection AddBotServices(this IServiceCollection collection, HostBuilderContext context)
     {
-        collection.Configure<BotOptions>(context.Configuration.GetSection(BotOptions.SectionName));
-        collection.AddSingleton<IBotOptions, BotOptionsProvider>();
-        collection.AddSingleton<DiscordSocketConfig, BotDiscordSocketConfig>();
-        collection.AddSingleton<InteractionServiceConfig, BotInteractionServiceConfig>();
-        collection.AddSingleton<InteractionService>();
-        collection.AddSingleton<DiscordSocketClient>();
-        collection.AddSingleton<IBotVersionProvider, BotVersionProvider>();
-        collection.AddSingleton<LoggingHandler>();
-        collection.AddSingleton<CommandHandler>();
-        collection.AddHostedService<BotService>();
-
-        return collection;
+        return collection
+            .Configure<BotOptions>(context.Configuration.GetSection(BotOptions.SectionName))
+            .AddSingleton<IBotOptions, BotOptionsProvider>()
+            .AddSingleton<DiscordSocketConfig, BotDiscordSocketConfig>()
+            .AddSingleton<InteractionServiceConfig, BotInteractionServiceConfig>()
+            .AddSingleton<InteractionService>()
+            .AddSingleton<DiscordSocketClient>()
+            .AddSingleton<IBotVersionProvider, BotVersionProvider>()
+            .AddSingleton<LoggingHandler>()
+            .AddSingleton<CommandHandler>()
+            .AddHostedService<BotService>()
+            .AddHostedService<RssUpdateService>();
     }
 }
